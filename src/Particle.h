@@ -10,7 +10,7 @@ class Particle {
 
     const physicalDouble mass_; // kg
 
-    const physicalDouble charge_; // Coulombs
+    physicalDouble charge_; // Coulombs
 
     Vec3Physical position_, velocity_, acceleration_; // m, m/s, m/s^2
 
@@ -33,6 +33,8 @@ public:
     // Smaller interval ---implies--> more calling ---results in-->  more accurate and less discrete-feeling simulations
     void update(const std::uint64_t timeInterval); // Time is in microseconds
 
+    // Assign a charge to the particle.
+    void charge(const physicalDouble n);
     /*
     Vec3Physical position() const {
         return position_;
