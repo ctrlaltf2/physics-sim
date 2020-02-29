@@ -10,7 +10,7 @@ void ofApp::setup() {
 	glEnable(GL_POINT_SMOOTH); // use circular points instead of square points
 	glPointSize(2);
 
-	Particle electron(1, Vec3Physical(0, 0, 0), Vec3Physical(1, 0.01, 0.01));
+	Particle electron(1, Vec3Physical(0, 0, 0), Vec3Physical(0, 0.01, 0.01));
 
     particleSystem.add(electron), mesh.addVertex(ofPoint(0, 0, 0));
 }
