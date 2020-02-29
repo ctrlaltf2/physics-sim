@@ -11,17 +11,17 @@ namespace universeConstant {
     const physicalDouble G = physicalDouble("+6.67430E-11");
 
     // Elementary charge
-    const physicalDouble e = physicalDouble("1.602176634E-19");
+    const physicalDouble e = physicalDouble("+1.602176634E-19");
 
     // Vacuum electric permittivity
-    const physicalDouble e_0 = physicalDouble("8.8541878128E-12");
+    const physicalDouble e_0 = physicalDouble("+8.8541878128E-12");
 
     // Vacuum magnetic permittivity
-    const physicalDouble u_0 = physicalDouble("1.25663706212E-6");
+    const physicalDouble u_0 = physicalDouble("+1.25663706212E-6");
 
     // Mass of an electron
-    const physicalDouble m_e = physicalDouble("9.1093837015E-31");
+    const physicalDouble m_e = physicalDouble("+9.1093837015E-31");
 
     // Mass of a proton
-    const physicalDouble m_p = physicalDouble("1.67262192369E-27");
+    const physicalDouble m_p = physicalDouble("+1.67262192369E-27");
 }
