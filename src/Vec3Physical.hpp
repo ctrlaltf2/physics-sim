@@ -24,7 +24,11 @@ public:
     }
 
     Vec3Physical unit() const {
-        return this->dividedBy(this->magnitude());
+        auto magnitude = this->magnitude();
+        if(magnitude == 0)
+            return Vec3Physical(0, 0, 0);
+        else
+            return this->dividedBy(magnitude);
     }
 
     Vec3Physical cross(const Vec3Physical& other) const {
