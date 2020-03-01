@@ -19,13 +19,13 @@ void Particle::update(const std::uint64_t timeInterval) { // Time is in microsec
     // Update velocity from this
     // NOTE: div by 10^6 because time in in microseconds. This corrects to give meters / microsecond.
     velocity_.plusEq(
-            acceleration_.dividedBy(1'000'000)
+            acceleration_.dividedBy(100'000'000)
                     .multipliedBy(timeInterval)
     );
 
     // Update position from velocity
     position_.plusEq(
-            velocity_.dividedBy(1'000'000)
+            velocity_.dividedBy(100'000'000)
                     .multipliedBy(timeInterval)
     );
 
