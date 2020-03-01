@@ -29,7 +29,7 @@ void ParticleSystem::update() {
 
     // Magnetic force (moving charge through a field)
     // For now just having a static hard-coded field to see how things work out.
-    const static Vec3Physical B(physicalDouble("+2.43E-5"), 0, 0); // Tesla
+    const static Vec3Physical B(0, 0, physicalDouble("+2.43E-5")); // Tesla
     for(auto& particle : particles_) {
         // F_b = q * v x B
         const Vec3Physical& F_b = particle.velocity_.cross(B).multipliedBy(particle.charge_);
@@ -37,7 +37,8 @@ void ParticleSystem::update() {
             particle.velocity_.i() << ", " << particle.velocity_.j() << ", " << particle.velocity_.k() << ") x (" <<
             B.i() << ", " << B.j() << ", " << B.k() << ") = " <<
         F_b.i() << ' ' << F_b.j() << ' ' << F_b.k() << ", \n|B| = " <<
-        F_b.magnitude() << ", |v| = " << particle.velocity_.magnitude() << '\n';
+        F_b.magnitude() << ", |v| = " << particle.velocity_.magnitude() << "@" << std::fixed <<
+        (180.0 / 3.14159265358979324f) * atan2(particle.velocity_.j(), particle.velocity_.i()) << '\n';
         particle.addForce(F_b);
     }
 

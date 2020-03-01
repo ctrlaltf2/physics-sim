@@ -83,6 +83,13 @@ public:
     }
     // End TODO
 
+    bool operator==(const Vec3Physical& rhs) const {
+        return
+            i() == rhs.i() &&
+            j() == rhs.j() &&
+            k() == rhs.k();
+    }
+
     physicalDouble i() const { return i_; }
     physicalDouble j() const { return j_; }
     physicalDouble k() const { return k_; }

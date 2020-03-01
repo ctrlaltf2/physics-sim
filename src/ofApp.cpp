@@ -10,12 +10,12 @@ void ofApp::setup() {
 	glEnable(GL_POINT_SMOOTH); // use circular points instead of square points
 	glPointSize(2);
 
-	//Particle electron(universeConstant::m_e, Vec3Physical(0, 0, 0), Vec3Physical(0, 0.00, 127));
-	//electron.charge(-1 * universeConstant::e);
+	Particle electron(universeConstant::m_e, Vec3Physical(0, 0, 0), Vec3Physical(0, 127, 0));
+	electron.charge(-1 * universeConstant::e);
 
-    Particle yeet(1, Vec3Physical(0, 0, 0), Vec3Physical(50, 0, 0));
+    //Particle yeet(1, Vec3Physical(0, 0, 0), Vec3Physical(50, 0, 0));
 
-    particleSystem.add(yeet), mesh.addVertex(ofPoint(0, 0, 0));
+    particleSystem.add(electron), mesh.addVertex(ofPoint(0, 0, 0));
 }
 
 //--------------------------------------------------------------
