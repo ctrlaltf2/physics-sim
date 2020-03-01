@@ -27,7 +27,6 @@ void ofApp::update() {
 void ofApp::draw() {
 	ofBackgroundGradient(ofColor::gray, ofColor::black, OF_GRADIENT_CIRCULAR);
 
-	// even points can overlap with each other, let's avoid that
 	cam.begin();
 	//ofScale(2, -2, 2); // flip the y axis and zoom in a bit
 	//ofRotateYDeg(90);
