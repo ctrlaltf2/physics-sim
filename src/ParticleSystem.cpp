@@ -9,7 +9,7 @@ void ParticleSystem::update() {
     for(int a = 0; a < particles_.size(); ++a) {
         for(int b = a + 1; b < particles_.size(); ++b) {
             // Unit vec from a to b (https://math.stackexchange.com/questions/273236/finding-the-unit-vector-indicating-direction-from-a-to-b)
-            Vec3Physical& aPos = particles_[a].position_, bPos = particles_[b].position_;
+            Position& aPos = particles_[a].position_, bPos = particles_[b].position_;
             const auto unitV =
                     bPos
                     .minus(aPos)
@@ -29,16 +29,10 @@ void ParticleSystem::update() {
 
     // Magnetic force (moving charge through a field)
     // For now just having a static hard-coded field to see how things work out.
-    const static Vec3Physical B(0, 0, physicalDouble("+2.43E-5")); // Tesla
+    const static Vec3Physical B(0, 0, physicalDouble("+1E-3")); // Tesla
     for(auto& particle : particles_) {
         // F_b = q * v x B
-        const Vec3Physical& F_b = particle.velocity_.cross(B).multipliedBy(particle.charge_);
-        std::cout << "Magnetic force: q v x B = " << std::scientific << particle.charge_ << "(" <<
-            particle.velocity_.i() << ", " << particle.velocity_.j() << ", " << particle.velocity_.k() << ") x (" <<
-            B.i() << ", " << B.j() << ", " << B.k() << ") = " <<
-        F_b.i() << ' ' << F_b.j() << ' ' << F_b.k() << ", \n|B| = " <<
-        F_b.magnitude() << ", |v| = " << particle.velocity_.magnitude() << "@" << std::fixed <<
-        (180.0 / 3.14159265358979324f) * atan2(particle.velocity_.j(), particle.velocity_.i()) << '\n';
+        const Force& F_b = particle.velocity_.cross(B).multipliedBy(particle.charge_);
         particle.addForce(F_b);
     }
 

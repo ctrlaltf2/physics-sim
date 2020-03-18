@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PhysicalNumbers.hpp"
-#include "Vec3Physical.cpp"
+#include "Vec3Physical.hpp"
 
 class ParticleSystem;
 
@@ -12,21 +12,25 @@ class Particle {
 
     physicalDouble charge_; // Coulombs
 
-    Vec3Physical position_, velocity_, acceleration_; // m, m/s, m/s^2
+    Position position_; // m
 
-    Vec3Physical runningForce_; // N, Sum of all the forces that are to be popped into its acceleration
+    Velocity velocity_; // m/s
+
+    Acceleration acceleration_; // m/s^2
+
+    Force runningForce_; // N, Sum of all the forces that are to be popped into its acceleration
 public:
     Particle() = delete;
 
-    Particle(const physicalDouble mass, const Vec3Physical& position) {
+    Particle(const Mass mass, const Position& position) {
         Particle(mass, position, Vec3Physical(0, 0, 0));
     }
 
-    Particle(const physicalDouble mass, const Vec3Physical& position, const Vec3Physical& velocity) : position_{position}, velocity_{velocity}, mass_{mass} {
+    Particle(const Mass mass, const Position& position, const Velocity& velocity) : position_{position}, velocity_{velocity}, mass_{mass} {
         acceleration_ = Vec3Physical(0, 0, 0);
     }
 
-    void addForce(const Vec3Physical& f);
+    void addForce(const Force& f);
 
     // Get a new acceleration based on the forces
     // Interval param is roughly how much time has passed since the last update, and basically how much we need to 'catch up'
@@ -34,7 +38,7 @@ public:
     void update(const std::uint64_t timeInterval); // Time is in microseconds
 
     // Assign a charge to the particle.
-    void charge(const physicalDouble n);
+    void charge(const Charge c);
     /*
     Vec3Physical position() const {
         return position_;

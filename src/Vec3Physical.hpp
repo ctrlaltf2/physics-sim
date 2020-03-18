@@ -98,3 +98,9 @@ public:
     physicalDouble j() const { return j_; }
     physicalDouble k() const { return k_; }
 };
+
+// Add some useful typedefs for more expressiveness for functions returning these things (i.e. the ODE solvers)
+using Position = Vec3Physical;
+using Velocity = Vec3Physical;
+using Acceleration = Vec3Physical;
+using Force = Vec3Physical;
