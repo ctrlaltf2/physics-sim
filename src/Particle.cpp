@@ -13,26 +13,15 @@ void Particle::update(const std::uint64_t timeInterval) { // Time is in microsec
     // Set our new acceleration based on runningForce_
     acceleration_ = runningForce_.dividedBy(mass_);
 
-    std::cout << std::scientific << "Force: " << runningForce_.magnitude() << " Accel: " << acceleration_.magnitude() << '\n';
+    // std::cout << std::scientific << "Force: " << runningForce_.magnitude() << " Accel: " << acceleration_.magnitude() << '\n';
 
     // Reset the running force
     runningForce_.zero();
 
-    // Update velocity from this
-    // NOTE: div by 10^6 because time in in microseconds. This corrects to give meters / microsecond.
-    velocity_.plusEq(
-            acceleration_.dividedBy(100'000'000)
-                    .multipliedBy(timeInterval)
-    );
+    std::tie(position_, velocity_) = ode::solve<ode::method::euler>(position_, velocity_, acceleration_, timeInterval);
 
-    // Update position from velocity
-    position_.plusEq(
-            velocity_.dividedBy(100'000'000)
-                    .multipliedBy(timeInterval)
-    );
-
-    std::cout << std::scientific << velocity_.magnitude() << '\n';
-    //std::cout << std::scientific << position_.i() << ' ' << position_.j() << ' ' << position_.k() << '\n';
+    // std::cout << std::scientific << velocity_.magnitude() << '\n';
+    // std::cout << std::scientific << position_.i() << ' ' << position_.j() << ' ' << position_.k() << '\n';
     //velocity_.magnitude() << '\n';
 }
 

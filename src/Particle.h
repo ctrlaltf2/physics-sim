@@ -1,5 +1,6 @@
 #pragma once
 
+#include "OdeSolver.hpp"
 #include "PhysicalNumbers.hpp"
 #include "Vec3Physical.hpp"
 
