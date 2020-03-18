@@ -9,7 +9,7 @@
 #include <vector>
 
 
-constexpr double kWorldScale = 1000000000000000; // Multiply up/down the world scale. If this = 100, then 100 internal coordinates == 1 meter
+constexpr double kWorldScale = 1000; // Multiply up/down the world scale. If this = 100, then 100 internal coordinates == 1 meter
 
 
 class ParticleSystem {

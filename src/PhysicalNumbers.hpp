@@ -5,6 +5,10 @@
 // Double that should, with reasonable enough precision, be able to represent the small numbers involved in small particle calculations
 using physicalDouble = boost::multiprecision::cpp_dec_float_50;
 
+// Useful typedefs for expressiveness
+using Mass = physicalDouble;
+using Charge = physicalDouble;
+
 // Physical constants
 namespace universeConstant {
     // Gravitational constant

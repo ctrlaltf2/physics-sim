@@ -2,7 +2,7 @@
 
 #include <iomanip>
 
-void Particle::addForce(const Vec3Physical& f) {
+void Particle::addForce(const Force& f) {
     runningForce_.plusEq(f);
 }
 
@@ -12,6 +12,8 @@ void Particle::addForce(const Vec3Physical& f) {
 void Particle::update(const std::uint64_t timeInterval) { // Time is in microseconds
     // Set our new acceleration based on runningForce_
     acceleration_ = runningForce_.dividedBy(mass_);
+
+    std::cout << std::scientific << "Force: " << runningForce_.magnitude() << " Accel: " << acceleration_.magnitude() << '\n';
 
     // Reset the running force
     runningForce_.zero();
@@ -29,10 +31,12 @@ void Particle::update(const std::uint64_t timeInterval) { // Time is in microsec
                     .multipliedBy(timeInterval)
     );
 
+    std::cout << std::scientific << velocity_.magnitude() << '\n';
     //std::cout << std::scientific << position_.i() << ' ' << position_.j() << ' ' << position_.k() << '\n';
+    //velocity_.magnitude() << '\n';
 }
 
 
-void Particle::charge(const physicalDouble n) {
-    charge_ = n;
+void Particle::charge(const Charge c) {
+    charge_ = c;
 }
