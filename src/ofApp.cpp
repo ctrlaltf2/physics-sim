@@ -13,8 +13,6 @@ void ofApp::setup() {
 	Particle electron(Mass("+1E-22"), Position(0, 0, 0), Velocity(0, 1, 0));
 	electron.charge(Charge("+1E-17"));
 
-    //Particle yeet(1, Vec3Physical(0, 0, 0), Vec3Physical(50, 0, 0));
-
     particleSystem.add(electron), mesh.addVertex(ofPoint(0, 0, 0));
 }
 
